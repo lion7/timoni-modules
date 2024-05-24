@@ -1,8 +1,7 @@
 name: Release and sign modules
 on:
   push:
-    branches:
-      - main
+    tags: [ '*' ] # has to be semver format
 
 permissions:
   contents: read # needed for checkout

@@ -31,7 +31,7 @@ jobs:
       - name: Push and Sign module metallb-config
         run: |
           timoni mod push ./metallb-config \
-            oci://ghcr.io/${{ github.repository_owner }}/metallb-config \
+            oci://ghcr.io/${{ github.repository_owner }}/modules/metallb-config \
             --version ${{ github.ref_name }} \
             --latest \
             -a 'org.opencontainers.image.licenses=Apache-2.0' \

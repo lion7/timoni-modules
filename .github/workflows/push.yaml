@@ -33,7 +33,8 @@ jobs:
             oci://ghcr.io/${{ github.repository_owner }}/modules/metallb-config \
             --version ${{ github.ref_name }} \
             --latest \
+            --sign=cosign \
             -a 'org.opencontainers.image.licenses=Apache-2.0' \
             -a 'org.opencontainers.image.source=https://github.com/${{ github.repository }}' \
-            -a 'org.opencontainers.image.description=MetalLB config module.' \
-            --sign=cosign
+            -a 'org.opencontainers.image.description=A timoni.sh module for configuring MetalLB.' \
+            -a 'org.opencontainers.image.documentation=https://github.com/lion7/timoni-modules/blob/main/metallb-config/README.md'

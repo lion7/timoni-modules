@@ -24,10 +24,11 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Vet module metallb-ipaddresspool
+      - name: Vet modules
         run: |
           timoni mod vet ./metallb-ipaddresspool
-      - name: Push and Sign module metallb-ipaddresspool
+          timoni mod vet ./cert-manager-clusterissuer
+      - name: Push and sign modules
         run: |
           timoni mod push ./metallb-ipaddresspool \
             oci://ghcr.io/${{ github.repository_owner }}/modules/metallb-ipaddresspool \
@@ -38,3 +39,12 @@ jobs:
             -a 'org.opencontainers.image.source=https://github.com/${{ github.repository }}' \
             -a 'org.opencontainers.image.description=A timoni.sh module for configuring MetalLB.' \
             -a 'org.opencontainers.image.documentation=https://github.com/lion7/timoni-modules/blob/main/metallb-ipaddresspool/README.md'
+          timoni mod push ./cert-manager-clusterissuer \
+            oci://ghcr.io/${{ github.repository_owner }}/modules/cert-manager-clusterissuer \
+            --version ${{ github.ref_name }} \
+            --latest \
+            --sign=cosign \
+            -a 'org.opencontainers.image.licenses=Apache-2.0' \
+            -a 'org.opencontainers.image.source=https://github.com/${{ github.repository }}' \
+            -a 'org.opencontainers.image.description=A timoni.sh module for configuring cert-manager.' \
+            -a 'org.opencontainers.image.documentation=https://github.com/lion7/timoni-modules/blob/main/cert-manager-clusterissuer/README.md'

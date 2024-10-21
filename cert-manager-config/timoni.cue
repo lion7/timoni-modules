@@ -5,7 +5,7 @@
 package main
 
 import (
-	templates "timoni.sh/metallb-config/templates"
+	templates "timoni.sh/cert-manager-config/templates"
 )
 
 // Define the schema for the user-supplied values.

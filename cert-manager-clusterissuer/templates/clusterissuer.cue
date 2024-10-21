@@ -6,7 +6,6 @@ import (
 
 #ClusterIssuer: clusterissuerv1.#ClusterIssuer & {
 	#config:  #Config
-	#spec:   	clusterissuerv1.#ClusterIssuerSpec
 	metadata: #config.metadata
-	spec:     clusterissuerv1.#ClusterIssuerSpec & #spec
+	spec:     clusterissuerv1.#ClusterIssuerSpec & #config.spec
 }

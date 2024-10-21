@@ -2,7 +2,6 @@ package templates
 
 import (
 	timoniv1 "timoni.sh/core/v1alpha1"
-	issuerv1 "cert-manager.io/issuer/v1"
 	clusterissuerv1 "cert-manager.io/clusterissuer/v1"
 )
 
@@ -32,9 +31,8 @@ import (
 	// The annotations allows adding `metadata.annotations` to all resources.
 	metadata: annotations?: timoniv1.#Annotations
 
-	// Specs.
-	issuers: [...issuerv1.#IssuerSpec]
-	clusterissuers: [...clusterissuerv1.#ClusterIssuerSpec]
+	// ClusterIssuer spec.
+	spec!: clusterissuerv1.#ClusterIssuerSpec
 }
 
 // Instance takes the config values and outputs the Kubernetes objects.
@@ -42,11 +40,6 @@ import (
 	config: #Config
 
 	objects: {
-		[for i, e in config.issuers {
-			#Issuer & {#config: config, #spec: e}
-		}] +
-		[for i, e in config.clusterissuers {
-			#ClusterIssuer & {#config: config, #spec: e}
-		}]
+		clusterissuer: #ClusterIssuer & {#config: config}
 	}
 }

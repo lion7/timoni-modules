@@ -1,4 +1,4 @@
-# cert-manager-config
+# cert-manager-clusterissuer
 
 A [timoni.sh](http://timoni.sh) module for managing MetalLB custom resources.
 
@@ -7,7 +7,7 @@ A [timoni.sh](http://timoni.sh) module for managing MetalLB custom resources.
 To create an instance using the default values:
 
 ```shell
-timoni -n cert-manager apply cert-manager-config oci://ghcr.io/lion7/timoni-modules/cert-manager-config
+timoni -n cert-manager apply cert-manager-clusterissuer oci://ghcr.io/lion7/timoni-modules/cert-manager-clusterissuer
 ```
 
 To change the [default configuration](#configuration),
@@ -27,7 +27,7 @@ values: {
 And apply the values with:
 
 ```shell
-timoni -n cert-manager apply cert-manager-config oci://ghcr.io/lion7/timoni-modules/cert-manager-config \
+timoni -n cert-manager apply cert-manager-clusterissuer oci://ghcr.io/lion7/timoni-modules/cert-manager-clusterissuer \
 --values ./my-values.cue
 ```
 
@@ -36,7 +36,7 @@ timoni -n cert-manager apply cert-manager-config oci://ghcr.io/lion7/timoni-modu
 To uninstall an instance and delete all its Kubernetes resources:
 
 ```shell
-timoni -n cert-manager delete cert-manager-config
+timoni -n cert-manager delete cert-manager-clusterissuer
 ```
 
 ## Configuration

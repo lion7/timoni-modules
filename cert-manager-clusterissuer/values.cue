@@ -7,6 +7,5 @@ package main
 
 // Defaults
 values: {
-	issuers: []
-	clusterissuers: []
+	spec: {}
 }

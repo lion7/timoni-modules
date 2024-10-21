@@ -5,7 +5,7 @@
 package main
 
 import (
-	templates "timoni.sh/cert-manager-config/templates"
+	templates "timoni.sh/cert-manager-clusterissuer/templates"
 )
 
 // Define the schema for the user-supplied values.

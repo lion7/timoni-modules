@@ -7,5 +7,5 @@ import (
 #IPAddressPool: metallbv1.#IPAddressPool & {
 	#config:  #Config
 	metadata: #config.metadata
-	spec:     metallbv1.#IPAddressPoolSpec & #config.pool
+	spec:     metallbv1.#IPAddressPoolSpec & #config.spec
 }

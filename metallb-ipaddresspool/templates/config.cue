@@ -32,7 +32,7 @@ import (
 	metadata: annotations?: timoniv1.#Annotations
 
 	// IP address pool spec.
-	pool!: metallbv1.#IPAddressPoolSpec
+	spec!: metallbv1.#IPAddressPoolSpec
 }
 
 // Instance takes the config values and outputs the Kubernetes objects.

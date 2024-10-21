@@ -7,5 +7,5 @@ package main
 
 // Defaults
 values: {
-	pool: {}
+	spec: {}
 }

@@ -24,17 +24,17 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Vet module metallb-config
+      - name: Vet module metallb-ipaddresspool
         run: |
-          timoni mod vet ./metallb-config
-      - name: Push and Sign module metallb-config
+          timoni mod vet ./metallb-ipaddresspool
+      - name: Push and Sign module metallb-ipaddresspool
         run: |
-          timoni mod push ./metallb-config \
-            oci://ghcr.io/${{ github.repository_owner }}/modules/metallb-config \
+          timoni mod push ./metallb-ipaddresspool \
+            oci://ghcr.io/${{ github.repository_owner }}/modules/metallb-ipaddresspool \
             --version ${{ github.ref_name }} \
             --latest \
             --sign=cosign \
             -a 'org.opencontainers.image.licenses=Apache-2.0' \
             -a 'org.opencontainers.image.source=https://github.com/${{ github.repository }}' \
             -a 'org.opencontainers.image.description=A timoni.sh module for configuring MetalLB.' \
-            -a 'org.opencontainers.image.documentation=https://github.com/lion7/timoni-modules/blob/main/metallb-config/README.md'
+            -a 'org.opencontainers.image.documentation=https://github.com/lion7/timoni-modules/blob/main/metallb-ipaddresspool/README.md'

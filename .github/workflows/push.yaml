@@ -27,7 +27,7 @@ jobs:
       - name: Vet modules
         run: |
           timoni mod vet ./metallb-ipaddresspool
-          timoni mod vet ./cert-manager-clusterissuer
+          timoni mod vet ./bridge-cni
       - name: Push and sign modules
         run: |
           timoni mod push ./metallb-ipaddresspool \
@@ -48,3 +48,12 @@ jobs:
             -a 'org.opencontainers.image.source=https://github.com/${{ github.repository }}' \
             -a 'org.opencontainers.image.description=A timoni.sh module for configuring cert-manager.' \
             -a 'org.opencontainers.image.documentation=https://github.com/lion7/timoni-modules/blob/main/cert-manager-clusterissuer/README.md'
+          timoni mod push ./bridge-cni \
+            oci://ghcr.io/${{ github.repository_owner }}/modules/bridge-cni \
+            --version ${{ github.ref_name }} \
+            --latest \
+            --sign=cosign \
+            -a 'org.opencontainers.image.licenses=Apache-2.0' \
+            -a 'org.opencontainers.image.source=https://github.com/${{ github.repository }}' \
+            -a 'org.opencontainers.image.description=A timoni.sh module for configuring bridge-cni.' \
+            -a 'org.opencontainers.image.documentation=https://github.com/lion7/timoni-modules/blob/main/bridge-cni/README.md'

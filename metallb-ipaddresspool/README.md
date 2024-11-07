@@ -1,6 +1,6 @@
 # metallb-ipaddresspool
 
-A [timoni.sh](http://timoni.sh) module for managing MetalLB custom resources.
+A [timoni.sh](http://timoni.sh) module for managing a MetalLB IP pool.
 
 ## Install
 
@@ -17,11 +17,12 @@ For example, create a file `my-values.cue` with the following content:
 
 ```cue
 values: {
-	pool: adresses: [
-		"203.0.113.0/24",
-		"2001:db8::/32"
-	]
+  spec: adresses: [
+    "203.0.113.0/24",
+    "2001:db8::/32"
+  ]
 }
+
 ```
 
 And apply the values with:
@@ -43,8 +44,8 @@ timoni -n metallb-system delete metallb-ipaddresspool
 
 ### General values
 
-| Key                          | Type                                    | Default | Description                                                                                                                                  |
-|------------------------------|-----------------------------------------|---------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| `metadata: labels:`          | `{[ string]: string}`                   | `{}`    | Common labels for all resources                                                                                                              |
-| `metadata: annotations:`     | `{[ string]: string}`                   | `{}`    | Common annotations for all resources                                                                                                         |
-| `pool:`                      | `metallbv1.#IPAddressPool`              | `{}`    | [IPAddressPool spec](https://metallb.universe.tf/apis/#ipaddresspoolspec)                                                                    |
+| Key                      | Type                           | Default | Description                                                               |
+|--------------------------|--------------------------------|---------|---------------------------------------------------------------------------|
+| `metadata: labels:`      | `{[ string]: string}`          | `{}`    | Common labels for all resources                                           |
+| `metadata: annotations:` | `{[ string]: string}`          | `{}`    | Common annotations for all resources                                      |
+| `spec:`                  | `metallbv1.#IPAddressPoolSpec` | `{}`    | [IPAddressPool spec](https://metallb.universe.tf/apis/#ipaddresspoolspec) |

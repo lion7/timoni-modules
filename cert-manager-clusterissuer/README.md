@@ -1,6 +1,6 @@
 # cert-manager-clusterissuer
 
-A [timoni.sh](http://timoni.sh) module for managing MetalLB custom resources.
+A [timoni.sh](http://timoni.sh) module for managing a CertManager ClusterIssuer.
 
 ## Install
 
@@ -17,10 +17,13 @@ For example, create a file `my-values.cue` with the following content:
 
 ```cue
 values: {
-	pool: adresses: [
-		"203.0.113.0/24",
-		"2001:db8::/32"
-	]
+  spec: {
+    acme: {
+      server: "https://acme-staging-v02.api.letsencrypt.org/directory"
+      privateKeySecretRef: name: "letsencrypt-staging"
+      email: "test@example.com"
+    }
+  }
 }
 ```
 

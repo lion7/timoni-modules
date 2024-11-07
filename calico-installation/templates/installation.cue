@@ -5,7 +5,7 @@ import (
 )
 
 #Installation: tigerav1.#Installation & {
-	#config:  #Config
-	metadata: #config.metadata
-	spec:     tigerav1.#InstallationSpec & #config.spec
+	#config: #Config
+	metadata: {name: "default"}
+	spec: tigerav1.#InstallationSpec & #config.spec
 }

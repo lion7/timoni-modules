@@ -29,6 +29,7 @@ jobs:
           timoni mod push ./blueprints/crd \
             oci://ghcr.io/lion7/timoni-modules/blueprints/crd \
             --version ${{ github.ref_name }} \
+            --latest \
             -a 'org.opencontainers.image.licenses=Apache-2.0' \
             -a 'org.opencontainers.image.source=https://github.com/lion7/timoni-modules' \
             -a 'org.opencontainers.image.description=CRD blueprint for timoni.sh modules.' \
@@ -39,6 +40,7 @@ jobs:
           timoni mod push ./bridge-cni \
             oci://ghcr.io/${{ github.repository_owner }}/timoni-modules/bridge-cni \
             --version ${{ github.ref_name }} \
+            --latest \
             --sign=cosign \
             -a 'org.opencontainers.image.licenses=Apache-2.0' \
             -a 'org.opencontainers.image.source=https://github.com/${{ github.repository }}' \
@@ -54,6 +56,7 @@ jobs:
             timoni mod push ./$module \
               oci://ghcr.io/${{ github.repository_owner }}/timoni-modules/$group/$name \
               --version ${{ github.ref_name }} \
+              --latest \
               --sign=cosign \
               -a "org.opencontainers.image.licenses=Apache-2.0" \
               -a "org.opencontainers.image.source=https://github.com/${{ github.repository }}" \

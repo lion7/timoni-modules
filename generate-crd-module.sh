@@ -32,7 +32,7 @@ CRD_VERSION=$(yq '.spec.versions[] | select(.served == true) | .name' "$CRD_PATH
 rm -rf "crd/$CRD_GROUP"
 mkdir -p "crd/$CRD_GROUP"
 cd "crd/$CRD_GROUP"
-timoni mod init "$CRD_KIND" --blueprint oci://ghcr.io/lion7/timoni-modules/blueprints/crd:0.0.1
+timoni mod init "$CRD_KIND" --blueprint oci://ghcr.io/lion7/timoni-modules/blueprints/crd
 mv "$CRD_KIND" "$CRD_SINGULAR"
 cd "$CRD_SINGULAR"
 

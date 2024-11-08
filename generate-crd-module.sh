@@ -29,7 +29,7 @@ CRD_SINGULAR=$(yq .spec.names.singular "$CRD_PATH")
 CRD_VERSION=$(yq '.spec.versions[] | select(.served == true) | .name' "$CRD_PATH")
 
 # (Re)generate the module
-rm -rf "crd/$CRD_GROUP"
+rm -rf "crd/$CRD_GROUP/$CRD_SINGULAR"
 mkdir -p "crd/$CRD_GROUP"
 cd "crd/$CRD_GROUP"
 timoni mod init "$CRD_KIND" --blueprint oci://ghcr.io/lion7/timoni-modules/blueprints/crd
@@ -44,3 +44,4 @@ sed -i "s|module: \"timoni.sh/$CRD_KIND\"|// Generated from $CRD_URL\nmodule: \"
 sed -i "s|timoni.sh/$CRD_KIND/templates|timoni.sh/$CRD_SINGULAR/templates|" timoni.cue
 sed -i "s|package templates|package templates\n\nimport crd \"$CRD_GROUP/$CRD_SINGULAR/$CRD_VERSION\"|" templates/*
 timoni mod vet .
+find . -iname '*.cue' -exec cue fmt {} +

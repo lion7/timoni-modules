@@ -45,3 +45,4 @@ sed -i "s|timoni.sh/$CRD_KIND/templates|timoni.sh/$CRD_SINGULAR/templates|" timo
 sed -i "s|package templates|package templates\n\nimport crd \"$CRD_GROUP/$CRD_SINGULAR/$CRD_VERSION\"|" templates/*
 timoni mod vet .
 find . -iname '*.cue' -exec cue fmt {} +
+git add .

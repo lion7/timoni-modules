@@ -63,7 +63,7 @@ import "strings"
 		id!: string
 		includeWhen?: [...string]
 		readyWhen?: [...string]
-		template!: {}
+		template!: {...}
 	}]
 
 	// The schema of the resourcegraphdefinition, which includes the

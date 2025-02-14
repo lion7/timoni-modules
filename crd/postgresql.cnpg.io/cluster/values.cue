@@ -9,5 +9,6 @@ package main
 values: {
 	spec: {
 		instances: 1
+		storage: size: "1Gi"
 	}
 }
